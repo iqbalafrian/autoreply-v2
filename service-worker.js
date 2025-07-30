@@ -1,19 +1,21 @@
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open('autoreply-cache').then(cache => {
-      return cache.addAll([
-        './',
-        './index.html',
-        './manifest.json',
-        './icon-192.png',
-        './icon-512.png'
-      ]);
-    })
-  );
-});
+function renderTemplates() {
+  const container = document.getElementById("templateList");
+  
+  // ✅ Bersihkan dulu konten lama agar tidak dobel
+  container.innerHTML = "";
 
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(response => response || fetch(e.request))
-  );
-});
+  const templates = JSON.parse(localStorage.getItem("templates")) || [];
+  
+  templates.forEach((template, index) => {
+    const item = document.createElement("div");
+    item.className = "template-item"; // sesuai class kamu
+    item.innerHTML = `
+      <div class="template-content">
+        <strong>${template.title}</strong>
+        <p class="truncate">${template.content}</p>
+        <!-- Tombol, checkbox, dll -->
+      </div>
+    `;
+    container.appendChild(item);
+  });
+}
