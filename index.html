@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoReply v2</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
+  <meta name="theme-color" content="#ffffff"/>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('SW registered', reg))
+        .catch(err => console.error('SW failed', err));
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f8f8f8;
+      color: #111;
+    }
+    header {
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.5rem;
+      padding: 1rem;
+    }
+    main {
+      padding: 1rem;
+    }
+    /* Truncated style */
+    .template-content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 90%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <header>AutoReply</header>
+  <main>
+    <p>🌙☀️ Toggle Mode | 📑 Template Manager Aktif | 📱 iOS-style PWA</p>
+    <div class="template-content">Contoh isi template yang panjang sekali sehingga terpotong otomatis...</div>
+  </main>
+</body>
+</html>
